@@ -57,7 +57,7 @@ pipeline{
                 echo "========Transferring files to Kubernetes Server========"
                 sshagent(['kubernetes_server']){
                 sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.4.247'
-                sh 'mkdir /home/pc/${JOB_NAME}/'
+                sh 'mkdir -p /home/pc/${JOB_NAME}/'
                 // sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/* akshay@192.168.1.88:/home/pc/k8_test/'
                 }
             }
