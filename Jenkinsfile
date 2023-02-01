@@ -67,7 +67,7 @@ pipeline{
                 sshagent(['kubernetes_server']){
                 sh 'ssh -o StrictHostKeyChecking=no akshay@192.168.1.88'
                 // sh 'mkdir -p /home/pc/${JOB_NAME}/' 192.168.1.88
-                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@192.168.1.88:/home/pc/spring-web-socket/'
+                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@192.168.1.88:/home/pc/spring-boot-websocket/'
                 }
             }
         }
