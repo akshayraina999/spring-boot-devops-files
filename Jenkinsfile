@@ -52,13 +52,30 @@ pipeline{
                 sh 'docker push akshayraina/$JOB_NAME:v1.$BUILD_ID'
             }
         }
+        stage("Transferring files to Ansible Server"){
+            steps{
+                echo "========Transferring files to Kubernetes Server========"
+                sshagent(['ansible_server']){
+                    sh 'ssh -o StrictHostKeyChecking=no root@10.154.14.18 cd /home/ubuntu/spring-boot-websocket/'
+                    sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/playbook.yml root@10.154.14.18:/home/ubuntu/spring-boot-websocket/'
+                }
+            }
+        }
         stage("Transferring files to Kubernetes Server"){
             steps{
                 echo "========Transferring files to Kubernetes Server========"
                 sshagent(['kubernetes_server']){
-                sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.4.247'
+                sh 'ssh -o StrictHostKeyChecking=no akshay@192.168.1.88'
                 // sh 'mkdir -p /home/pc/${JOB_NAME}/' 192.168.1.88
-                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/* akshay@172.16.4.247:/home/pc/spring-web-socket/'
+                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@192.168.1.88:/home/pc/spring-web-socket/'
+                }
+            }
+        }
+        stage("Deploy on Kubernetes"){
+            steps{
+                echo "========Deploying on Kubernetes Server========"
+                sshagent(['ansible_server']){
+                    sh 'ssh -o StrictHostKeyChecking=no root@10.154.14.18 ansible-playbook /home/ubuntu/spring-boot-websocket/playbook.yml'
                 }
             }
         }
