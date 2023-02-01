@@ -49,6 +49,16 @@ pipeline{
             steps{
                 echo "========Pushing Docker Image========"
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push akshayraina/$JOB_NAME:v1.$BUILD_ID'
+            }
+        }
+        stage("Transferring files to Kubernetes Server"){
+            steps{
+                echo "========Transferring files to Kubernetes Server========"
+                sshagent(['kubernetes_server']){
+                sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.4.247'
+                sh 'mkdir /home/pc/${JOB_NAME}/'
+                // sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/* akshay@192.168.1.88:/home/pc/k8_test/'
             }
         }
     }
