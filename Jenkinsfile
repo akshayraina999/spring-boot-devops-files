@@ -42,7 +42,7 @@ pipeline{
         stage("Docker Image Build"){
             steps{
                 echo "========Building Docker Image========"
-                sh 'docker build -t . akshayraina/${JOB_NAME}:v.${BUILD_ID}'
+                sh 'docker build . -t akshayraina/${JOB_NAME}:v.${BUILD_ID}'
             }
         }
         stage("Saving Image to DockerHub"){
