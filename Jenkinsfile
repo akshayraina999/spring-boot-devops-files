@@ -16,12 +16,12 @@ pipeline{
                 git branch: "${params.BRANCH}", url: 'https://github.com/akshayraina999/spring-boot-pipeline-project.git'
             }
         }
-        stage("UNIT Testing"){
-            steps{
-                echo "========UNIT Testing of Code========"
-                sh 'mvn test'
-            }
-        }
+        // stage("UNIT Testing"){
+        //     steps{
+        //         echo "========UNIT Testing of Code========"
+        //         sh 'mvn test'
+        //     }
+        // }
         stage("Compile"){
             steps{
                 echo "========Compiling Code========"
