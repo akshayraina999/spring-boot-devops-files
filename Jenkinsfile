@@ -19,17 +19,13 @@ pipeline{
         stage("UNIT Testing"){
             steps{
                 echo "========UNIT Testing of Code========"
-                steps{
-                    sh 'mvn test'
-                }
+                sh 'mvn test'
             }
         }
         stage("Compile"){
             steps{
                 echo "========Compiling Code========"
-                steps{
-                    sh 'mvn clean install -DskipTests'
-                }
+                sh 'mvn clean install -DskipTests'
             }
         }
     }
