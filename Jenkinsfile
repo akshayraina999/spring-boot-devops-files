@@ -68,7 +68,7 @@ pipeline{
                 sh 'ssh -o StrictHostKeyChecking=no akshay@192.168.1.88 cd /home/pc/spring-boot-websocket/'
                 // sh 'mkdir -p /home/pc/${JOB_NAME}/' 192.168.1.88
                 sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@192.168.1.88:/home/pc/spring-boot-websocket/'
-                sh "ssh -o StrictHostKeyChecking=no akshay@192.168.1.88 sed 's/build_number/${BUILD_ID}/' /home/pc/spring-boot-websocket/deploy.yml"
+                sh "ssh -o StrictHostKeyChecking=no akshay@192.168.1.88 sed -i 's/build_number/${BUILD_ID}/' /home/pc/spring-boot-websocket/deploy.yml"
                 }
             }
         }
