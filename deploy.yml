@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: websocket-app
-        image: akshayraina/spring-boot-websocket-app:v1.19
+        # image: akshayraina/spring-boot-websocket-app:v1.19
+        image: akshayraina/spring-boot-websocket-app:v1.build_number
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
