@@ -1,8 +1,8 @@
 - hosts: kubernetes
   become: true
   tasks: 
-    #  - name: delete old deployment
-      #  command: kubectl delete -f /home/ubuntu/Deployment.yml
+     - name: delete old deployment
+       command: kubectl delete -f /home/pc/spring-boot-websocket/deploy.yml
     #  - name: delete old service
       #  command: kubectl delete -f /home/ubuntu/Service.yml
      - name: create new deployment
