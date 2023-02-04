@@ -16,9 +16,23 @@ spec:
       - name: websocket-app
         # image: akshayraina/spring-boot-websocket-app:v1.19
         image: akshayraina/spring-boot-websocket-app:v1.build_number
+        resources: 
+          requests: 
+            memory: "64Mi"
+            cpu: "250m"
+          limits: 
+            memory: "128Mi"
+            cpu: "500m"
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+      livenessProbe:
+        exec: 
+          command: 
+          - cat
+          - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
 ---
 kind: Service
 apiVersion: v1
