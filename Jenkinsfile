@@ -50,6 +50,7 @@ pipeline{
                 echo "========Pushing Docker Image========"
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push akshayraina/$JOB_NAME:v1.$BUILD_ID'
+                sh 'docker rmi akshayraina/$JOB_NAME:v1.$BUILD_ID'
             }
         }
         stage("Transferring files to Ansible Server"){
