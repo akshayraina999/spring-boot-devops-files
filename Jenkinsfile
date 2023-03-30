@@ -57,8 +57,8 @@ pipeline{
             steps{
                 echo "========Transferring files to Kubernetes Server========"
                 sshagent(['ansible_server']){
-                    sh 'ssh -o StrictHostKeyChecking=no root@10.154.14.18 cd /home/ubuntu/spring-boot-websocket/'
-                    sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/playbook.yml root@10.154.14.18:/home/ubuntu/spring-boot-websocket/'
+                    sh 'ssh -o StrictHostKeyChecking=no root@10.83.191.88 cd /home/ubuntu/spring-boot-websocket/'
+                    sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/playbook.yml root@10.83.191.88:/home/ubuntu/spring-boot-websocket/'
                 }
             }
         }
@@ -66,10 +66,10 @@ pipeline{
             steps{
                 echo "========Transferring files to Kubernetes Server========"
                 sshagent(['kubernetes_server']){
-                sh 'ssh -o StrictHostKeyChecking=no akshay@192.168.1.88 cd /home/pc/spring-boot-websocket/'
+                sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 cd /home/pc/spring-boot-websocket/'
                 // sh 'mkdir -p /home/pc/${JOB_NAME}/' 192.168.1.88
-                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@192.168.1.88:/home/pc/spring-boot-websocket/'
-                sh "ssh -o StrictHostKeyChecking=no akshay@192.168.1.88 sed -i 's/build_number/${BUILD_ID}/' /home/pc/spring-boot-websocket/deploy.yml"
+                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@172.16.3.58:/home/pc/spring-boot-websocket/'
+                sh "ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 sed -i 's/build_number/${BUILD_ID}/' /home/pc/spring-boot-websocket/deploy.yml"
                 }
             }
         }
@@ -77,7 +77,7 @@ pipeline{
             steps{
                 echo "========Deploying on Kubernetes Server========"
                 sshagent(['ansible_server']){
-                    sh 'ssh -o StrictHostKeyChecking=no root@10.154.14.18 ansible-playbook /home/ubuntu/spring-boot-websocket/playbook.yml'
+                    sh 'ssh -o StrictHostKeyChecking=no root@10.83.191.88 ansible-playbook /home/ubuntu/spring-boot-websocket/playbook.yml'
                 }
             }
         }
