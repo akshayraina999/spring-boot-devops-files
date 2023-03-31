@@ -2,10 +2,10 @@
   become: false
   tasks: 
      - name: delete old deployment
-       command: kubectl delete -f /home/pc/spring-boot-websocket/deploy.yml
+       command: kubectl delete -f /home/pristyn/spring-boot-websocket/deploy.yml
     #  - name: delete old service
       #  command: kubectl delete -f /home/ubuntu/Service.yml
      - name: create new deployment
-       command: kubectl apply -f /home/pc/spring-boot-websocket/deploy.yml
+       command: kubectl apply -f /home/pristyn/spring-boot-websocket/deploy.yml
     #  - name: create new service
       #  command: kubectl apply -f /home/ubuntu/Service.yml
