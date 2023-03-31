@@ -55,7 +55,7 @@ pipeline{
         }
         stage("Transferring files to Ansible Server"){
             steps{
-                echo "========Transferring files to Kubernetes Server========"
+                echo "========Transferring files to Ansible Server========"
                 sshagent(['ansible_server']){
                     sh 'ssh -o StrictHostKeyChecking=no root@10.83.191.88 cd /home/ubuntu/spring-boot-websocket/'
                     sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/playbook.yml root@10.83.191.88:/home/ubuntu/spring-boot-websocket/'
