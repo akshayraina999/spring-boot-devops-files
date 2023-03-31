@@ -66,10 +66,10 @@ pipeline{
             steps{
                 echo "========Transferring files to Kubernetes Server========"
                 sshagent(['kubernetes_server']){
-                sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 cd /home/pristyn/spring-boot-websocket/'
+                sh 'ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 cd /home/pristyn/Kubernetes/spring-boot-websocket/'
                 // sh 'mkdir -p /home/pc/${JOB_NAME}/' 192.168.1.88
-                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@172.16.3.58:/home/pristyn/spring-boot-websocket/'
-                sh "ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 sed -i 's/build_number/${BUILD_ID}/' /home/pristyn/spring-boot-websocket/deploy.yml"
+                sh 'scp /var/lib/jenkins/workspace/${JOB_NAME}/deploy.yml akshay@172.16.3.58:/home/pristyn/Kubernetes/spring-boot-websocket/'
+                sh "ssh -o StrictHostKeyChecking=no akshay@172.16.3.58 sed -i 's/build_number/${BUILD_ID}/' /home/pristyn/Kubernetes/spring-boot-websocket/deploy.yml"
                 }
             }
         }
