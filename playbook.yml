@@ -1,5 +1,5 @@
 - hosts: kubernetes
-  become: true
+  become: false
   tasks: 
      - name: delete old deployment
        command: kubectl delete -f /home/pc/spring-boot-websocket/deploy.yml
