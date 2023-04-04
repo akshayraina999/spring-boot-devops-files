@@ -1,5 +1,5 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: websocket-app
 spec:
@@ -26,13 +26,13 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-      livenessProbe:
-        exec: 
-          command: 
-          - cat
-          - /tmp/healthy
-        initialDelaySeconds: 5
-        periodSeconds: 5
+      # livenessProbe:
+      #   exec: 
+      #     command: 
+      #     - cat
+      #     - /tmp/healthy
+      #   initialDelaySeconds: 5
+      #   periodSeconds: 5
 ---
 kind: Service
 apiVersion: v1
