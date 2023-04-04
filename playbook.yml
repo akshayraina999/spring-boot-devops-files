@@ -1,20 +1,20 @@
 - hosts: kubernetes
   become: false
   tasks: 
-    - name: Get an existing Deployment object
-      kubernetes.core.k8s_info:
-        api_version: apps/v1
-        kind: Deployment
-        name: websocket-app
-        # namespace: testing
-      register: websocket-app-deployment
+    # - name: Get an existing Deployment object
+    #   kubernetes.core.k8s_info:
+    #     api_version: apps/v1
+    #     kind: Deployment
+    #     name: websocket-app
+    #     # namespace: testing
+    #   register: websocket-app-deployment
 
-    - name: Output of kubernetes deployment
-      debug:
-        var: websocket-app-deployment
+    # - name: Output of kubernetes deployment
+    #   debug:
+    #     var: websocket-app-deployment
       
-    - name: delete old deployment
-      command: kubectl delete -f /home/pristyn/spring-boot-websocket/deploy.yml
+    # - name: delete old deployment
+    #   command: kubectl delete -f /home/pristyn/spring-boot-websocket/deploy.yml
   #  - name: delete old service
     #  command: kubectl delete -f /home/ubuntu/Service.yml
     - name: create new deployment
